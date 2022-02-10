@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8374f230-77a5-4ed3-89eb-3acfd9cbab9e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/C#/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C#/Trivia/Tests/Tests.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C#/Trivia/Trivia.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C#/Trivia/Trivia.sln.DotSettings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C#/Trivia/Trivia/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C#/Trivia/Trivia/Game.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C#/Trivia/Trivia/GameRunner.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C#/Trivia/Trivia/Trivia.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C++/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C++/Game.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C++/Game.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C++/GameRunner.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C++/makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C-oo-style/game.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C-oo-style/game.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C-oo-style/game_runner.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C-structless/game.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C-structless/game.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C-structless/game_runner.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C-structless/player.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/C-structless/player.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/COBOL/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/COBOL/game.cob" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PowerShell/game.ps1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clojure/project.clj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clojure/src/trivia/Game.clj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clojure/src/trivia/Gamerunner.clj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/coffeescript/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/coffeescript/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/coffeescript/game.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/coffeescript/game.spec.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/coffeescript/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/d/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/d/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/d/source/game.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/d/source/trivia.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fsharp/Trivia.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fsharp/Trivia/App.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fsharp/Trivia/Game.fs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fsharp/Trivia/Trivia.fsproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/go/trivia.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/groovy/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/groovy/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/groovy/src/main/groovy/com/adaptionsoft/games/trivia/runner/GameRunner.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/groovy/src/main/groovy/com/adaptionsoft/games/uglytrivia/Game.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript/game.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript/game.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javascript/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kotlin/ReadMe.gradle.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kotlin/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kotlin/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kotlin/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kotlin/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kotlin/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kotlin/src/main/kotlin/com/adaptionsoft/games/trivia/runner/GameRunner.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kotlin/src/main/kotlin/com/adaptionsoft/games/uglytrivia/Game.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kotlin/src/test/kotlin/com/adaptionsoft/games/trivia/SomeTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lua/trivia.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs/src/game.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs/src/game.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objective-c/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objective-c/trivia/trivia.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objective-c/trivia/trivia/LCRGame.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objective-c/trivia/trivia/LCRGame.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objective-c/trivia/trivia/main.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objective-c/trivia/trivia/trivia-Prefix.pch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objective-c/trivia/triviaTests/triviaTests-Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objective-c/trivia/triviaTests/triviaTests-Prefix.pch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objective-c/trivia/triviaTests/triviaTests.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/perl/trivia.pl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/Game.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/GameRunner.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python2/trivia.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python3/trivia.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/racket/trivia.rkt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reference/randomSeq.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reference/result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruby/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruby/.rspec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruby/.rvmrc.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruby/Gemfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruby/Gemfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruby/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruby/Rakefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruby/bin/trivia" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruby/lib/ugly_trivia/game.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruby/spec/example_spec.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruby/spec/spec_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruby/test/example_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ruby/test/test_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rust/Cargo.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rust/src/main.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scala/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scala/build.sbt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scala/src/main/scala/com/adaptionsoft/games/trivia/runner/GameRunner.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scala/src/main/scala/com/adaptionsoft/games/uglytrivia/Game.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shellscript/game.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/smalltalk/Game.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/swift/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/swift/Trivia.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/swift/Trivia.xcodeproj/xcshareddata/xcschemes/Trivia.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/swift/Trivia/Game.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/swift/Trivia/main.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/swift/TriviaTests/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/swift/TriviaTests/TriviaTests.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/typescript/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/typescript/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/typescript/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/typescript/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/typescript/src/game-runner.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/typescript/src/game.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/typescript/tests/game.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vb6/Trivia/UglyTrivia.vbp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vb6/Trivia/clsGame.cls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vb6/Trivia/frmGameRunner.frm" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="24vX0RcnkGj9BiPywE34UV17w3h" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8374f230-77a5-4ed3-89eb-3acfd9cbab9e" name="Changes" comment="" />
+      <created>1644511816137</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1644511816137</updated>
+      <workItem from="1644511817576" duration="131000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
