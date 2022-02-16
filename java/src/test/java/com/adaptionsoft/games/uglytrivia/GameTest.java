@@ -1,7 +1,6 @@
-package com.adaptionsoft.games.trivia;
+package com.adaptionsoft.games.uglytrivia;
 
 
-import com.adaptionsoft.games.uglytrivia.Game;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -10,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class GameTest {
 
     @Test
-    void aPlayer_shouldWinaGame_whenHeGive6CorrectAnswers() {
+    void aPlayer_shouldWinAGame_whenHeGive6CorrectAnswers() {
         var game = new Game();
         game.add("John");
 
@@ -26,7 +25,7 @@ class GameTest {
     }
 
     @Test
-    void aPlayer_shouldNotWinaGame_untilHeAnswers6TimesCorrectly() {
+    void aPlayer_shouldNotWinAGame_untilHeAnswers6TimesCorrectly() {
         var game = new Game();
         game.add("John");
 
@@ -37,7 +36,7 @@ class GameTest {
     }
 
     @Test
-    void aPlayer_shouldNotWinaGame_whenHeAnswersIncorrectly() {
+    void aPlayer_shouldNotWinAGame_whenHeAnswersIncorrectly() {
         var game = new Game();
         game.add("John");
 
@@ -48,7 +47,7 @@ class GameTest {
     }
 
     @Test
-    void aPlayer_shouldNotWinaGame_whenHeAnswersIncorrectlyMultipleTimes() {
+    void aPlayer_shouldNotWinAGame_whenHeAnswersIncorrectlyMultipleTimes() {
         var game = new Game();
         game.add("John");
 
@@ -64,7 +63,7 @@ class GameTest {
     }
 
     @Test
-    void aPlayer_shouldWinaGame_whenHeAnswersCorrectly6timesButNotInARowAndIsNotInPenalty() {
+    void aPlayer_shouldWinAGame_whenHeAnswersCorrectly6timesButNotInARowAndIsNotInPenalty() {
         var game = new Game();
         game.add("John");
 
