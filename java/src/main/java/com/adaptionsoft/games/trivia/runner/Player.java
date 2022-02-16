@@ -1,7 +1,5 @@
 package com.adaptionsoft.games.trivia.runner;
 
-import java.util.Objects;
-
 public final class Player {
     private final String name;
     private int place;
@@ -19,8 +17,24 @@ public final class Player {
         return isPenaltyBox;
     }
 
+    public int getPlace() {
+        return place;
+    }
+
+    public int getPurses() {
+        return purses;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void movetoPenaltyBox() {
         this.isPenaltyBox = true;
+    }
+
+    public void moveOutFromPenaltyBox() {
+        this.isPenaltyBox = false;
     }
 
     public void move(int roll) {
@@ -30,32 +44,8 @@ public final class Player {
         }
     }
 
-    public int getPlace() {
-        return place;
-    }
-
-    public int getPurses() {
-        return purses;
-    }
-
     public void incrementPurses() {
         this.purses++;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (Player) obj;
-        return Objects.equals(this.name, that.name) &&
-                this.place == that.place &&
-                this.purses == that.purses &&
-                this.isPenaltyBox == that.isPenaltyBox;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, place, purses, isPenaltyBox);
     }
 
     @Override

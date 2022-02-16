@@ -112,6 +112,7 @@ public class Game {
             if (isGettingOutOfPenaltyBox) {
                 System.out.println("Answer was correct!!!!");
                 currentPlayer.incrementPurses();
+                currentPlayer.moveOutFromPenaltyBox();
                 logCurrentUserPurses(currentPlayer);
 
                 boolean winner = didPlayerWin();
