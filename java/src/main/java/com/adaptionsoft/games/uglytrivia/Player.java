@@ -1,24 +1,20 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import java.util.Objects;
+
 public final class Player {
     private final String name;
-    private int place;
     private int purses;
     private boolean isPenaltyBox;
 
     public Player(String name) {
         this.name = name;
-        this.place = 0;
         this.purses = 0;
         this.isPenaltyBox = false;
     }
 
     public boolean isPenaltyBox() {
         return isPenaltyBox;
-    }
-
-    public int getPlace() {
-        return place;
     }
 
     public int getPurses() {
@@ -37,13 +33,6 @@ public final class Player {
         this.isPenaltyBox = false;
     }
 
-    public void move(int roll) {
-        this.place += roll;
-        if (this.place > 11) {
-            this.place -= 12;
-        }
-    }
-
     public void incrementPurses() {
         this.purses++;
     }
@@ -52,10 +41,20 @@ public final class Player {
     public String toString() {
         return "Player[" +
                 "name=" + name + ", " +
-                "place=" + place + ", " +
                 "purses=" + purses + ", " +
                 "isPenaltyBox=" + isPenaltyBox + ']';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return name.equals(player.name);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 }

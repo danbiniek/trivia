@@ -11,7 +11,6 @@ class PlayerTest {
         var player = new Player("name");
 
         assertEquals("name", player.getName());
-        assertEquals(0, player.getPlace());
         assertEquals(0, player.getPurses());
         assertFalse(player.isPenaltyBox());
     }
@@ -21,7 +20,6 @@ class PlayerTest {
         var player = new Player(null);
 
         assertNull(player.getName());
-        assertEquals(0, player.getPlace());
         assertEquals(0, player.getPurses());
         assertFalse(player.isPenaltyBox());
     }
@@ -31,36 +29,8 @@ class PlayerTest {
         var player = new Player("");
 
         assertEquals("", player.getName());
-        assertEquals(0, player.getPlace());
         assertEquals(0, player.getPurses());
         assertFalse(player.isPenaltyBox());
-    }
-
-    @Test
-    void aPlayer_shouldMoveByRoll() {
-        var player = new Player("name");
-
-        player.move(1);
-
-        assertEquals(1, player.getPlace());
-    }
-
-    @Test
-    void aPlayer_shouldResetPlace_whenRollIsEqualsThen12() {
-        var player = new Player("name");
-
-        player.move(12);
-
-        assertEquals(0, player.getPlace());
-    }
-
-    @Test
-    void aPlayer_shouldResetPlaceAndMoveFromStart_whenRollIsGraterThen12() {
-        var player = new Player("name");
-
-        player.move(15);
-
-        assertEquals(3, player.getPlace());
     }
 
     @Test
