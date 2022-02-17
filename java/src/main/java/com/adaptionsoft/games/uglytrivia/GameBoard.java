@@ -10,8 +10,8 @@ public class GameBoard {
     private final Category[] board = new Category[12];
 
     public void addPlayer(Player player) {
-        var exist = players.containsKey(player);
-        if (exist) {
+        var doPlayerExist = players.containsKey(player);
+        if (doPlayerExist) {
             throw new IllegalArgumentException("Player already exist");
         }
         players.put(player, 0);

@@ -4,25 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private int currentPlayerNo = 0;
-    private List<Player> players = new ArrayList<>();
-    private boolean isGettingOutOfPenaltyBox;
+    private final List<Player> players = new ArrayList<>();
     private final GameBoard gameBoard;
+    private int currentPlayerNo = 0;
+    private boolean isGettingOutOfPenaltyBox;
 
     public Game() {
         this.gameBoard = new GameBoard();
     }
 
     public void add(String playerName) {
-        Player player = new Player(playerName);
+        var player = new Player(playerName);
         players.add(player);
         gameBoard.addPlayer(player);
         System.out.println(playerName + " was added");
         System.out.println("They are player number " + gameBoard.getNumberOfPlayers());
-    }
-
-    public int howManyPlayers() {
-        return gameBoard.getNumberOfPlayers();
     }
 
     public void roll(int roll) {
@@ -54,11 +50,8 @@ public class Game {
                 getCurrentPlayer().incrementPurses();
                 getCurrentPlayer().moveOutFromPenaltyBox();
                 logCurrentUserPurses(getCurrentPlayer());
-
-                boolean winner = didPlayerWin();
                 changePlayer();
-
-                return winner;
+                return didPlayerWin();
             } else {
                 changePlayer();
                 return true;
@@ -79,13 +72,8 @@ public class Game {
         System.out.println("Question was incorrectly answered");
         System.out.println(getCurrentPlayer().getName() + " was sent to the penalty box");
         getCurrentPlayer().movetoPenaltyBox();
-        currentPlayerNo++;
-        if (currentPlayerNo == players.size()) currentPlayerNo = 0;
+        changePlayer();
         return true;
-    }
-
-    public boolean isPlayable() {
-        return (howManyPlayers() >= 2);
     }
 
     private void logCurrentPlayerLocation() {
