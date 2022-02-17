@@ -1,29 +1,12 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import com.adaptionsoft.games.trivia.runner.Player;
-
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
 
 public class Game {
     private int currentPlayer = 0;
     private List<Player> players = new ArrayList<>();
     private boolean isGettingOutOfPenaltyBox;
-    private Deque<String> popQuestions = new ArrayDeque<>();
-    private Deque<String> scienceQuestions = new ArrayDeque<>();
-    private Deque<String> sportsQuestions = new ArrayDeque<>();
-    private Deque<String> rockQuestions = new ArrayDeque<>();
-
-    public Game() {
-        for (int i = 0; i < 50; i++) {
-            popQuestions.addLast("Pop Question " + i);
-            scienceQuestions.addLast(("Science Question " + i));
-            sportsQuestions.addLast(("Sports Question " + i));
-            rockQuestions.addLast("Rock Question " + i);
-        }
-    }
 
     public boolean isPlayable() {
         return (howManyPlayers() >= 2);
@@ -74,28 +57,21 @@ public class Game {
     }
 
     private void askQuestion() {
-        if (currentCategory() == "Pop")
-            System.out.println(popQuestions.removeFirst());
-        if (currentCategory() == "Science")
-            System.out.println(scienceQuestions.removeFirst());
-        if (currentCategory() == "Sports")
-            System.out.println(sportsQuestions.removeFirst());
-        if (currentCategory() == "Rock")
-            System.out.println(rockQuestions.removeFirst());
+        currentCategory().ask();
     }
 
 
-    private String currentCategory() {
-        if (getCurrentPlayerPlace() == 0) return "Pop";
-        if (getCurrentPlayerPlace() == 4) return "Pop";
-        if (getCurrentPlayerPlace() == 8) return "Pop";
-        if (getCurrentPlayerPlace() == 1) return "Science";
-        if (getCurrentPlayerPlace() == 5) return "Science";
-        if (getCurrentPlayerPlace() == 9) return "Science";
-        if (getCurrentPlayerPlace() == 2) return "Sports";
-        if (getCurrentPlayerPlace() == 6) return "Sports";
-        if (getCurrentPlayerPlace() == 10) return "Sports";
-        return "Rock";
+    private Category currentCategory() {
+        if (getCurrentPlayerPlace() == 0) return Category.POP;
+        if (getCurrentPlayerPlace() == 4) return Category.POP;
+        if (getCurrentPlayerPlace() == 8) return Category.POP;
+        if (getCurrentPlayerPlace() == 1) return Category.SCIENCE;
+        if (getCurrentPlayerPlace() == 5) return Category.SCIENCE;
+        if (getCurrentPlayerPlace() == 9) return Category.SCIENCE;
+        if (getCurrentPlayerPlace() == 2) return Category.SPORT;
+        if (getCurrentPlayerPlace() == 6) return Category.SPORT;
+        if (getCurrentPlayerPlace() == 10) return Category.SPORT;
+        return Category.ROCK;
     }
 
     private Player getCurrentPlayer() {

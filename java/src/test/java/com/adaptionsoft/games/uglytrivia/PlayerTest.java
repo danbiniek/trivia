@@ -1,6 +1,5 @@
-package com.adaptionsoft.games.trivia;
+package com.adaptionsoft.games.uglytrivia;
 
-import com.adaptionsoft.games.trivia.runner.Player;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
