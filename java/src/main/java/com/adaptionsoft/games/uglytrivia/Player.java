@@ -9,8 +9,6 @@ public final class Player {
 
     public Player(String name) {
         this.name = name;
-        this.purses = 0;
-        this.isPenaltyBox = false;
     }
 
     public boolean isPenaltyBox() {
@@ -33,7 +31,7 @@ public final class Player {
         this.isPenaltyBox = false;
     }
 
-    public void incrementPurses() {
+    public void addCoin() {
         this.purses++;
     }
 

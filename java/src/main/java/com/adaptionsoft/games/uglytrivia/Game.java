@@ -47,7 +47,7 @@ public class Game {
         if (getCurrentPlayer().isPenaltyBox()) {
             if (isGettingOutOfPenaltyBox) {
                 System.out.println("Answer was correct!!!!");
-                getCurrentPlayer().incrementPurses();
+                getCurrentPlayer().addCoin();
                 getCurrentPlayer().moveOutFromPenaltyBox();
                 logCurrentUserPurses(getCurrentPlayer());
                 changePlayer();
@@ -58,7 +58,7 @@ public class Game {
             }
         } else {
             System.out.println("Answer was correct!!!!");
-            getCurrentPlayer().incrementPurses();
+            getCurrentPlayer().addCoin();
             logCurrentUserPurses(getCurrentPlayer());
 
             boolean winner = didPlayerWin();

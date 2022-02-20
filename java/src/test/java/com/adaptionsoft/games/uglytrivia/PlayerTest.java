@@ -76,7 +76,7 @@ class PlayerTest {
     void aPlayer_shouldIncrementPursesBy1_whenIncrementIsCalledOnce() {
         var player = new Player("name");
 
-        player.incrementPurses();
+        player.addCoin();
 
         assertEquals(1, player.getPurses());
     }
@@ -85,9 +85,9 @@ class PlayerTest {
     void aPlayer_shouldIncrementPursesByMultiple_whenIncrementIsCalledMultipleTimes() {
         var player = new Player("name");
 
-        player.incrementPurses();
-        player.incrementPurses();
-        player.incrementPurses();
+        player.addCoin();
+        player.addCoin();
+        player.addCoin();
 
         assertEquals(3, player.getPurses());
     }
