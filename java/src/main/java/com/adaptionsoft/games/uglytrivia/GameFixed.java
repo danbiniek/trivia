@@ -10,6 +10,7 @@ public class GameFixed implements IGame {
     class Player {
         private final String playerName;
         private int place;
+        private int purse;
 
         Player(String playerName) {
             this.playerName = playerName;
@@ -29,10 +30,17 @@ public class GameFixed implements IGame {
                 place -= 12;
             }
         }
+
+        public int getPurse() {
+            return purse;
+        }
+
+        public void addCoin() {
+            purse++;
+        }
     }
 
 
-    private int[] purses = new int[6];
     private boolean[] inPenaltyBox = new boolean[6];
     private List<Player> players = new ArrayList();
     private Deque<String> popQuestions = new LinkedList();
@@ -57,7 +65,6 @@ public class GameFixed implements IGame {
 
     public boolean add(String playerName) {
         players.add(new Player(playerName));
-        purses[howManyPlayers()] = 0;
         inPenaltyBox[howManyPlayers()] = false;
 
         System.out.println(playerName + " was added");
@@ -132,10 +139,10 @@ public class GameFixed implements IGame {
         if (inPenaltyBox[currentPlayer]) {
             if (isGettingOutOfPenaltyBox) {
                 System.out.println("Answer was correct!!!!");
-                purses[currentPlayer]++;
+                getCurrentPlayer().addCoin();
                 System.out.println(getCurrentPlayer().getPlayerName()
                         + " now has "
-                        + purses[currentPlayer]
+                        + getCurrentPlayer().getPurse()
                         + " Gold Coins.");
 
                 boolean winner = didPlayerWin();
@@ -150,10 +157,10 @@ public class GameFixed implements IGame {
             }
         } else {
             System.out.println("Answer was corrent!!!!");
-            purses[currentPlayer]++;
+            getCurrentPlayer().addCoin();
             System.out.println(getCurrentPlayer().getPlayerName()
                     + " now has "
-                    + purses[currentPlayer]
+                    + getCurrentPlayer().getPurse()
                     + " Gold Coins.");
 
             boolean winner = didPlayerWin();
@@ -180,6 +187,6 @@ public class GameFixed implements IGame {
 
 
     private boolean didPlayerWin() {
-        return !(purses[currentPlayer] == 6);
+        return !(getCurrentPlayer().getPurse() == 6);
     }
 }
