@@ -1,80 +1,32 @@
 package com.adaptionsoft.games.uglytrivia;
 
 import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
 
 public class GameFixed implements IGame {
 
-    class Player {
-        private final String playerName;
-        private int place;
-        private int purse;
-        private boolean inPenaltyBox;
-
-        Player(String playerName) {
-            this.playerName = playerName;
-        }
-
-        public String getPlayerName() {
-            return playerName;
-        }
-
-        public int getPlace() {
-            return place;
-        }
-
-        public void move(int roll) {
-            place += roll;
-            if (place >= 12) {
-                place -= 12;
-            }
-        }
-
-        public int getPurse() {
-            return purse;
-        }
-
-        public void addCoin() {
-            purse++;
-        }
-
-        public boolean isInPenaltyBox() {
-            return inPenaltyBox;
-        }
-
-        public void moveToPenaltyBox() {
-            inPenaltyBox = true;
-        }
-    }
-
-    private List<Player> players = new ArrayList();
-    private Deque<String> popQuestions = new LinkedList();
-    private Deque<String> scienceQuestions = new LinkedList();
-    private Deque<String> sportsQuestions = new LinkedList();
-    private Deque<String> rockQuestions = new LinkedList();
-    private int currentPlayer = 0;
     private boolean isGettingOutOfPenaltyBox;
+    private int currentPlayer = 0;
+    private List<Player> players = new ArrayList();
+
+    private List<String> popQuestions = new ArrayList<>();
+    private List<String> scienceQuestions = new ArrayList<>();
+    private List<String> sportsQuestions = new ArrayList<>();
+    private List<String> rockQuestions = new ArrayList<>();
 
     public GameFixed() {
         for (int i = 0; i < 50; i++) {
-            popQuestions.addLast("Pop Question " + i);
-            scienceQuestions.addLast(("Science Question " + i));
-            sportsQuestions.addLast(("Sports Question " + i));
-            rockQuestions.addLast(createRockQuestion(i));
+            popQuestions.add("Pop Question " + i);
+            scienceQuestions.add(("Science Question " + i));
+            sportsQuestions.add(("Sports Question " + i));
+            rockQuestions.add("Rock Question " + i);
         }
     }
 
-    public String createRockQuestion(int index) {
-        return "Rock Question " + index;
-    }
-
-    public boolean add(String playerName) {
+    public void add(String playerName) {
         players.add(new Player(playerName));
         System.out.println(playerName + " was added");
         System.out.println("They are player number " + players.size());
-        return true;
     }
 
     public void roll(int roll) {
@@ -90,7 +42,7 @@ public class GameFixed implements IGame {
                 System.out.println(getCurrentPlayer().getPlayerName()
                         + "'s new location is "
                         + getCurrentPlayer().getPlace());
-                System.out.println("The category is " + currentCategory());
+                System.out.println("The category is " + currentCategory().getName());
                 askQuestion();
             } else {
                 System.out.println(getCurrentPlayer().getPlayerName() + " is not getting out of the penalty box");
@@ -101,7 +53,7 @@ public class GameFixed implements IGame {
             System.out.println(getCurrentPlayer().getPlayerName()
                     + "'s new location is "
                     + getCurrentPlayer().getPlace());
-            System.out.println("The category is " + currentCategory());
+            System.out.println("The category is " + currentCategory().getName());
             askQuestion();
         }
 
@@ -112,28 +64,54 @@ public class GameFixed implements IGame {
     }
 
     private void askQuestion() {
-        if (currentCategory() == "Pop")
-            System.out.println(popQuestions.removeFirst());
-        if (currentCategory() == "Science")
-            System.out.println(scienceQuestions.removeFirst());
-        if (currentCategory() == "Sports")
-            System.out.println(sportsQuestions.removeFirst());
-        if (currentCategory() == "Rock")
-            System.out.println(rockQuestions.removeFirst());
+        switch (currentCategory()) {
+            case POP:
+                System.out.println(popQuestions.remove(0));
+                break;
+            case SCIENCE:
+                System.out.println(scienceQuestions.remove(0));
+                break;
+            case SPORTS:
+                System.out.println(sportsQuestions.remove(0));
+                break;
+            case ROCK:
+                System.out.println(rockQuestions.remove(0));
+                break;
+        }
+    }
+
+    enum Category {
+        POP("Pop"),
+        SCIENCE("Science"),
+        SPORTS("Sports"),
+        ROCK("Rock");
+
+        Category(String name) {
+            this.name = name;
+        }
+
+        private final String name;
+
+        public String getName() {
+            return name;
+        }
     }
 
 
-    private String currentCategory() {
-        if (getCurrentPlayer().getPlace() == 0) return "Pop";
-        if (getCurrentPlayer().getPlace() == 4) return "Pop";
-        if (getCurrentPlayer().getPlace() == 8) return "Pop";
-        if (getCurrentPlayer().getPlace() == 1) return "Science";
-        if (getCurrentPlayer().getPlace() == 5) return "Science";
-        if (getCurrentPlayer().getPlace() == 9) return "Science";
-        if (getCurrentPlayer().getPlace() == 2) return "Sports";
-        if (getCurrentPlayer().getPlace() == 6) return "Sports";
-        if (getCurrentPlayer().getPlace() == 10) return "Sports";
-        return "Rock";
+    private Category currentCategory() {
+        int modulo = getCurrentPlayer().getPlace() % 4;
+        switch (modulo) {
+            case 0:
+                return Category.POP;
+            case 1:
+                return Category.SCIENCE;
+            case 2:
+                return Category.SPORTS;
+            case 3:
+                return Category.ROCK;
+            default:
+                throw new UnsupportedOperationException();
+        }
     }
 
     public boolean wasCorrectlyAnswered() {
