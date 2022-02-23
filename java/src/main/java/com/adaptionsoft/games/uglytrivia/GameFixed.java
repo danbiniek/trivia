@@ -5,22 +5,14 @@ import java.util.List;
 
 public class GameFixed implements IGame {
 
+    private final QuestionCategories questionCategories;
+
     private boolean isGettingOutOfPenaltyBox;
     private int currentPlayer = 0;
     private List<Player> players = new ArrayList();
 
-    private List<String> popQuestions = new ArrayList<>();
-    private List<String> scienceQuestions = new ArrayList<>();
-    private List<String> sportsQuestions = new ArrayList<>();
-    private List<String> rockQuestions = new ArrayList<>();
-
     public GameFixed() {
-        for (int i = 0; i < 50; i++) {
-            popQuestions.add("Pop Question " + i);
-            scienceQuestions.add(("Science Question " + i));
-            sportsQuestions.add(("Sports Question " + i));
-            rockQuestions.add("Rock Question " + i);
-        }
+        questionCategories = new QuestionCategories();
     }
 
     public void add(String playerName) {
@@ -64,54 +56,12 @@ public class GameFixed implements IGame {
     }
 
     private void askQuestion() {
-        switch (currentCategory()) {
-            case POP:
-                System.out.println(popQuestions.remove(0));
-                break;
-            case SCIENCE:
-                System.out.println(scienceQuestions.remove(0));
-                break;
-            case SPORTS:
-                System.out.println(sportsQuestions.remove(0));
-                break;
-            case ROCK:
-                System.out.println(rockQuestions.remove(0));
-                break;
-        }
+        questionCategories.ask(currentCategory());
     }
-
-    enum Category {
-        POP("Pop"),
-        SCIENCE("Science"),
-        SPORTS("Sports"),
-        ROCK("Rock");
-
-        Category(String name) {
-            this.name = name;
-        }
-
-        private final String name;
-
-        public String getName() {
-            return name;
-        }
-    }
-
 
     private Category currentCategory() {
         int modulo = getCurrentPlayer().getPlace() % 4;
-        switch (modulo) {
-            case 0:
-                return Category.POP;
-            case 1:
-                return Category.SCIENCE;
-            case 2:
-                return Category.SPORTS;
-            case 3:
-                return Category.ROCK;
-            default:
-                throw new UnsupportedOperationException();
-        }
+        return Category.getCategoryBasedOnUserPlace(modulo);
     }
 
     public boolean wasCorrectlyAnswered() {
