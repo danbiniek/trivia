@@ -1,21 +1,36 @@
 package com.adaptionsoft.games.uglytrivia;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 
 public class GameFixed implements IGame {
-    ArrayList players = new ArrayList();
-    int[] places = new int[6];
-    int[] purses = new int[6];
-    boolean[] inPenaltyBox = new boolean[6];
 
-    LinkedList popQuestions = new LinkedList();
-    LinkedList scienceQuestions = new LinkedList();
-    LinkedList sportsQuestions = new LinkedList();
-    LinkedList rockQuestions = new LinkedList();
+    class Player {
+        private final String playerName;
 
-    int currentPlayer = 0;
-    boolean isGettingOutOfPenaltyBox;
+        Player(String playerName) {
+            this.playerName = playerName;
+        }
+
+        public String getPlayerName() {
+            return playerName;
+        }
+    }
+
+
+    private int[] places = new int[6];
+    private int[] purses = new int[6];
+    private boolean[] inPenaltyBox = new boolean[6];
+    private List<String> playerNames = new ArrayList();
+    private List<Player> players = new ArrayList();
+    private Deque<String> popQuestions = new LinkedList();
+    private Deque<String> scienceQuestions = new LinkedList();
+    private Deque<String> sportsQuestions = new LinkedList();
+    private Deque<String> rockQuestions = new LinkedList();
+    private int currentPlayer = 0;
+    private boolean isGettingOutOfPenaltyBox;
 
     public GameFixed() {
         for (int i = 0; i < 50; i++) {
@@ -30,14 +45,9 @@ public class GameFixed implements IGame {
         return "Rock Question " + index;
     }
 
-    public boolean isPlayable() {
-        return (howManyPlayers() >= 2);
-    }
-
     public boolean add(String playerName) {
-
-
-        players.add(playerName);
+        playerNames.add(playerName);
+        players.add(new Player(playerName));
         places[howManyPlayers()] = 0;
         purses[howManyPlayers()] = 0;
         inPenaltyBox[howManyPlayers()] = false;
@@ -52,24 +62,24 @@ public class GameFixed implements IGame {
     }
 
     public void roll(int roll) {
-        System.out.println(players.get(currentPlayer) + " is the current player");
+        System.out.println(getCurrentPlayer().getPlayerName() + " is the current player");
         System.out.println("They have rolled a " + roll);
 
         if (inPenaltyBox[currentPlayer]) {
             if (roll % 2 != 0) {
                 isGettingOutOfPenaltyBox = true;
 
-                System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
+                System.out.println(getCurrentPlayer().getPlayerName() + " is getting out of the penalty box");
                 places[currentPlayer] = places[currentPlayer] + roll;
                 if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 
-                System.out.println(players.get(currentPlayer)
+                System.out.println(getCurrentPlayer().getPlayerName()
                         + "'s new location is "
                         + places[currentPlayer]);
                 System.out.println("The category is " + currentCategory());
                 askQuestion();
             } else {
-                System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
+                System.out.println(getCurrentPlayer().getPlayerName() + " is not getting out of the penalty box");
                 isGettingOutOfPenaltyBox = false;
             }
 
@@ -78,13 +88,17 @@ public class GameFixed implements IGame {
             places[currentPlayer] = places[currentPlayer] + roll;
             if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 
-            System.out.println(players.get(currentPlayer)
+            System.out.println(getCurrentPlayer().getPlayerName()
                     + "'s new location is "
                     + places[currentPlayer]);
             System.out.println("The category is " + currentCategory());
             askQuestion();
         }
 
+    }
+
+    private Player getCurrentPlayer() {
+        return players.get(currentPlayer);
     }
 
     private void askQuestion() {
@@ -117,47 +131,48 @@ public class GameFixed implements IGame {
             if (isGettingOutOfPenaltyBox) {
                 System.out.println("Answer was correct!!!!");
                 purses[currentPlayer]++;
-                System.out.println(players.get(currentPlayer)
+                System.out.println(getCurrentPlayer().getPlayerName()
                         + " now has "
                         + purses[currentPlayer]
                         + " Gold Coins.");
 
                 boolean winner = didPlayerWin();
                 currentPlayer++;
-                if (currentPlayer == players.size()) currentPlayer = 0;
+                if (currentPlayer == getNumberOfPlayers()) currentPlayer = 0;
 
                 return winner;
             } else {
                 currentPlayer++;
-                if (currentPlayer == players.size()) currentPlayer = 0;
+                if (currentPlayer == getNumberOfPlayers()) currentPlayer = 0;
                 return true;
             }
-
-
         } else {
-
             System.out.println("Answer was corrent!!!!");
             purses[currentPlayer]++;
-            System.out.println(players.get(currentPlayer)
+            System.out.println(getCurrentPlayer().getPlayerName()
                     + " now has "
                     + purses[currentPlayer]
                     + " Gold Coins.");
 
             boolean winner = didPlayerWin();
             currentPlayer++;
-            if (currentPlayer == players.size()) currentPlayer = 0;
+            if (currentPlayer == getNumberOfPlayers()) currentPlayer = 0;
 
             return winner;
         }
     }
 
+    private int getNumberOfPlayers() {
+        return players.size();
+    }
+
     public boolean wrongAnswer() {
         System.out.println("Question was incorrectly answered");
-        System.out.println(players.get(currentPlayer) + " was sent to the penalty box");
+        System.out.println(getCurrentPlayer().getPlayerName() + " was sent to the penalty box");
         inPenaltyBox[currentPlayer] = true;
 
         currentPlayer++;
-        if (currentPlayer == players.size()) currentPlayer = 0;
+        if (currentPlayer == getNumberOfPlayers()) currentPlayer = 0;
         return true;
     }
 
