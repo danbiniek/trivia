@@ -11,6 +11,7 @@ public class GameFixed implements IGame {
         private final String playerName;
         private int place;
         private int purse;
+        private boolean inPenaltyBox;
 
         Player(String playerName) {
             this.playerName = playerName;
@@ -38,10 +39,16 @@ public class GameFixed implements IGame {
         public void addCoin() {
             purse++;
         }
+
+        public boolean isInPenaltyBox() {
+            return inPenaltyBox;
+        }
+
+        public void moveToPenaltyBox() {
+            inPenaltyBox = true;
+        }
     }
 
-
-    private boolean[] inPenaltyBox = new boolean[6];
     private List<Player> players = new ArrayList();
     private Deque<String> popQuestions = new LinkedList();
     private Deque<String> scienceQuestions = new LinkedList();
@@ -65,22 +72,16 @@ public class GameFixed implements IGame {
 
     public boolean add(String playerName) {
         players.add(new Player(playerName));
-        inPenaltyBox[howManyPlayers()] = false;
-
         System.out.println(playerName + " was added");
         System.out.println("They are player number " + players.size());
         return true;
-    }
-
-    public int howManyPlayers() {
-        return players.size();
     }
 
     public void roll(int roll) {
         System.out.println(getCurrentPlayer().getPlayerName() + " is the current player");
         System.out.println("They have rolled a " + roll);
 
-        if (inPenaltyBox[currentPlayer]) {
+        if (getCurrentPlayer().isInPenaltyBox()) {
             if (roll % 2 != 0) {
                 isGettingOutOfPenaltyBox = true;
 
@@ -136,7 +137,7 @@ public class GameFixed implements IGame {
     }
 
     public boolean wasCorrectlyAnswered() {
-        if (inPenaltyBox[currentPlayer]) {
+        if (getCurrentPlayer().isInPenaltyBox()) {
             if (isGettingOutOfPenaltyBox) {
                 System.out.println("Answer was correct!!!!");
                 getCurrentPlayer().addCoin();
@@ -178,7 +179,7 @@ public class GameFixed implements IGame {
     public boolean wrongAnswer() {
         System.out.println("Question was incorrectly answered");
         System.out.println(getCurrentPlayer().getPlayerName() + " was sent to the penalty box");
-        inPenaltyBox[currentPlayer] = true;
+        getCurrentPlayer().moveToPenaltyBox();
 
         currentPlayer++;
         if (currentPlayer == getNumberOfPlayers()) currentPlayer = 0;
