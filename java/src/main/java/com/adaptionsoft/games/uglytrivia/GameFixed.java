@@ -60,8 +60,7 @@ public class GameFixed implements IGame {
     }
 
     private Category currentCategory() {
-        int modulo = getCurrentPlayer().getPlace() % 4;
-        return Category.getCategoryBasedOnUserPlace(modulo);
+        return Category.getCategoryForPlayer(getCurrentPlayer());
     }
 
     public boolean wasCorrectlyAnswered() {

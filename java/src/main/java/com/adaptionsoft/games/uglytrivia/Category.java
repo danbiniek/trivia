@@ -16,7 +16,12 @@ enum Category {
         return name;
     }
 
-    public static Category getCategoryBasedOnUserPlace(int modulo) {
+    public static Category getCategoryForPlayer(Player aPlayer) {
+        int modulo = aPlayer.getPlace() % values().length;
+        return getCategory(modulo);
+    }
+
+    private static Category getCategory(int modulo) {
         return switch (modulo) {
             case 0 -> Category.POP;
             case 1 -> Category.SCIENCE;

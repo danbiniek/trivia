@@ -1,37 +1,41 @@
 package com.adaptionsoft.games.uglytrivia;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.BiFunction;
+import java.util.stream.Stream;
 
 class QuestionCategories {
-    private List<String> popQuestions = new ArrayList<>();
-    private List<String> scienceQuestions = new ArrayList<>();
-    private List<String> sportsQuestions = new ArrayList<>();
-    private List<String> rockQuestions = new ArrayList<>();
+
+    private Map<Category, List<String>> questions = new EnumMap<>(Category.class);
 
     public QuestionCategories() {
+        initQuestions();
         for (int i = 0; i < 50; i++) {
-            popQuestions.add("Pop Question " + i);
-            scienceQuestions.add(("Science Question " + i));
-            sportsQuestions.add(("Sports Question " + i));
-            rockQuestions.add("Rock Question " + i);
+            int index = i;
+            questions.computeIfPresent(Category.POP, addQuestions("Pop Question " + index));
+            questions.computeIfPresent(Category.SCIENCE, addQuestions("Science Question " + index));
+            questions.computeIfPresent(Category.SPORTS, addQuestions("Sports Question " + index));
+            questions.computeIfPresent(Category.ROCK, addQuestions("Rock Question " + index));
         }
     }
 
+    private void initQuestions() {
+        Stream.of(Category.values()).forEach(category -> questions.put(category, new ArrayList<>()));
+    }
+
+    private BiFunction<Category, List<String>, List<String>> addQuestions(String question) {
+        return (k, v) -> addQuestion(v, question);
+    }
+
+    private List<String> addQuestion(List<String> currentQuestions, String newQuestion) {
+        currentQuestions.add(newQuestion);
+        return currentQuestions;
+    }
+
     public void ask(Category category) {
-        switch (category) {
-            case POP:
-                System.out.println(popQuestions.remove(0));
-                break;
-            case SCIENCE:
-                System.out.println(scienceQuestions.remove(0));
-                break;
-            case SPORTS:
-                System.out.println(sportsQuestions.remove(0));
-                break;
-            case ROCK:
-                System.out.println(rockQuestions.remove(0));
-                break;
-        }
+        System.out.println(questions.get(category).remove(0));
     }
 }
