@@ -116,6 +116,6 @@ public class GameFixed implements IGame {
 
 
     private boolean didPlayerWin() {
-        return !(getCurrentPlayer().getPurse() == 6);
+        return getCurrentPlayer().getPurse() != 6;
     }
 }
