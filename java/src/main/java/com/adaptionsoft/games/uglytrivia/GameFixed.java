@@ -73,14 +73,11 @@ public class GameFixed implements IGame {
                         + getCurrentPlayer().getPurse()
                         + " Gold Coins.");
 
-                boolean winner = didPlayerWin();
-                currentPlayer++;
-                if (currentPlayer == getNumberOfPlayers()) currentPlayer = 0;
-
+                boolean winner = getCurrentPlayer().didWin();
+                changeToNextPlayer();
                 return winner;
             } else {
-                currentPlayer++;
-                if (currentPlayer == getNumberOfPlayers()) currentPlayer = 0;
+                changeToNextPlayer();
                 return true;
             }
         } else {
@@ -91,11 +88,17 @@ public class GameFixed implements IGame {
                     + getCurrentPlayer().getPurse()
                     + " Gold Coins.");
 
-            boolean winner = didPlayerWin();
-            currentPlayer++;
-            if (currentPlayer == getNumberOfPlayers()) currentPlayer = 0;
+            boolean winner = getCurrentPlayer().didWin();
+            changeToNextPlayer();
 
             return winner;
+        }
+    }
+
+    private void changeToNextPlayer() {
+        currentPlayer++;
+        if (currentPlayer == getNumberOfPlayers()) {
+            currentPlayer = 0;
         }
     }
 
@@ -108,13 +111,7 @@ public class GameFixed implements IGame {
         System.out.println(getCurrentPlayer().getPlayerName() + " was sent to the penalty box");
         getCurrentPlayer().moveToPenaltyBox();
 
-        currentPlayer++;
-        if (currentPlayer == getNumberOfPlayers()) currentPlayer = 0;
+        changeToNextPlayer();
         return true;
-    }
-
-
-    private boolean didPlayerWin() {
-        return getCurrentPlayer().getPurse() != 6;
     }
 }

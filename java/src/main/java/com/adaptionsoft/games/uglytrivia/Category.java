@@ -1,16 +1,20 @@
 package com.adaptionsoft.games.uglytrivia;
 
-enum Category {
-    POP("Pop"),
-    SCIENCE("Science"),
-    SPORTS("Sports"),
-    ROCK("Rock");
+import java.util.stream.Stream;
 
-    Category(String name) {
+enum Category {
+    POP("Pop", 0),
+    SCIENCE("Science", 1),
+    SPORTS("Sports", 2),
+    ROCK("Rock", 3);
+
+    Category(String name, int place) {
         this.name = name;
+        this.place = place;
     }
 
     private final String name;
+    private final int place;
 
     public String getName() {
         return name;
@@ -22,12 +26,9 @@ enum Category {
     }
 
     private static Category getCategory(int modulo) {
-        return switch (modulo) {
-            case 0 -> Category.POP;
-            case 1 -> Category.SCIENCE;
-            case 2 -> Category.SPORTS;
-            case 3 -> Category.ROCK;
-            default -> throw new UnsupportedOperationException();
-        };
+        return Stream.of(values())
+                .filter(category -> category.place == modulo)
+                .findFirst()
+                .orElseThrow();
     }
 }

@@ -42,4 +42,8 @@ class Player {
         inPenaltyBox = true;
     }
 
+
+    public boolean didWin() {
+        return purse == 6;
+    }
 }

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GameTest {
 
-    private static boolean notAWinner;
+    private static boolean didPlayerWin;
 
     @Test
     void aFixedGame_haveToLogTheSameOutputAsOriginalGame() {
@@ -51,10 +51,10 @@ class GameTest {
 
             int luckNumber = rand.nextInt(9);
             if (luckNumber == 7) {
-                notAWinner = game.wrongAnswer();
+                didPlayerWin = game.wrongAnswer();
             } else {
-                notAWinner = game.wasCorrectlyAnswered();
+                didPlayerWin = game.wasCorrectlyAnswered();
             }
-        } while (notAWinner);
+        } while (!didPlayerWin);
     }
 }
