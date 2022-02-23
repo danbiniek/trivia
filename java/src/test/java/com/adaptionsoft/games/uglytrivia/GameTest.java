@@ -18,7 +18,7 @@ class GameTest {
 
     @Test
     void aFixedGame_haveToLogTheSameOutputAsOriginalGame() {
-        for (int seed = 0; seed < 100; seed++) {
+        for (int seed = 0; seed < 24; seed++) {
             String expected = redirectOutput(Game::new, seed);
             String actual = redirectOutput(GameFixed::new, seed);
             assertEquals(expected, actual, "Change detected for seed: " + seed);

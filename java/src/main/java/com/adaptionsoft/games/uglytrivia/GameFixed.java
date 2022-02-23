@@ -9,6 +9,7 @@ public class GameFixed implements IGame {
 
     class Player {
         private final String playerName;
+        private int place;
 
         Player(String playerName) {
             this.playerName = playerName;
@@ -17,13 +18,22 @@ public class GameFixed implements IGame {
         public String getPlayerName() {
             return playerName;
         }
+
+        public int getPlace() {
+            return place;
+        }
+
+        public void move(int roll) {
+            place += roll;
+            if (place >= 12) {
+                place -= 12;
+            }
+        }
     }
 
 
-    private int[] places = new int[6];
     private int[] purses = new int[6];
     private boolean[] inPenaltyBox = new boolean[6];
-    private List<String> playerNames = new ArrayList();
     private List<Player> players = new ArrayList();
     private Deque<String> popQuestions = new LinkedList();
     private Deque<String> scienceQuestions = new LinkedList();
@@ -46,9 +56,7 @@ public class GameFixed implements IGame {
     }
 
     public boolean add(String playerName) {
-        playerNames.add(playerName);
         players.add(new Player(playerName));
-        places[howManyPlayers()] = 0;
         purses[howManyPlayers()] = 0;
         inPenaltyBox[howManyPlayers()] = false;
 
@@ -70,27 +78,21 @@ public class GameFixed implements IGame {
                 isGettingOutOfPenaltyBox = true;
 
                 System.out.println(getCurrentPlayer().getPlayerName() + " is getting out of the penalty box");
-                places[currentPlayer] = places[currentPlayer] + roll;
-                if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
-
+                getCurrentPlayer().move(roll);
                 System.out.println(getCurrentPlayer().getPlayerName()
                         + "'s new location is "
-                        + places[currentPlayer]);
+                        + getCurrentPlayer().getPlace());
                 System.out.println("The category is " + currentCategory());
                 askQuestion();
             } else {
                 System.out.println(getCurrentPlayer().getPlayerName() + " is not getting out of the penalty box");
                 isGettingOutOfPenaltyBox = false;
             }
-
         } else {
-
-            places[currentPlayer] = places[currentPlayer] + roll;
-            if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
-
+            getCurrentPlayer().move(roll);
             System.out.println(getCurrentPlayer().getPlayerName()
                     + "'s new location is "
-                    + places[currentPlayer]);
+                    + getCurrentPlayer().getPlace());
             System.out.println("The category is " + currentCategory());
             askQuestion();
         }
@@ -114,15 +116,15 @@ public class GameFixed implements IGame {
 
 
     private String currentCategory() {
-        if (places[currentPlayer] == 0) return "Pop";
-        if (places[currentPlayer] == 4) return "Pop";
-        if (places[currentPlayer] == 8) return "Pop";
-        if (places[currentPlayer] == 1) return "Science";
-        if (places[currentPlayer] == 5) return "Science";
-        if (places[currentPlayer] == 9) return "Science";
-        if (places[currentPlayer] == 2) return "Sports";
-        if (places[currentPlayer] == 6) return "Sports";
-        if (places[currentPlayer] == 10) return "Sports";
+        if (getCurrentPlayer().getPlace() == 0) return "Pop";
+        if (getCurrentPlayer().getPlace() == 4) return "Pop";
+        if (getCurrentPlayer().getPlace() == 8) return "Pop";
+        if (getCurrentPlayer().getPlace() == 1) return "Science";
+        if (getCurrentPlayer().getPlace() == 5) return "Science";
+        if (getCurrentPlayer().getPlace() == 9) return "Science";
+        if (getCurrentPlayer().getPlace() == 2) return "Sports";
+        if (getCurrentPlayer().getPlace() == 6) return "Sports";
+        if (getCurrentPlayer().getPlace() == 10) return "Sports";
         return "Rock";
     }
 
