@@ -1,6 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
-public record IsGettingFromPenaltyRollProcessor(Player player) implements RollProcessor {
+public record IsGettingFromPenaltyRollExecutor(Player player) implements RollExecutor {
 
     @Override
     public void execute() {

@@ -1,10 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
-public record AskQuestionRollProcessor(Player player, QuestionCategories questionCategories) implements RollProcessor {
-
-    public AskQuestionRollProcessor(Player player) {
-        this(player, new QuestionCategories());
-    }
+public record AskQuestionRollExecutor(Player player, QuestionCategories questionCategories) implements RollExecutor {
 
     @Override
     public void execute() {

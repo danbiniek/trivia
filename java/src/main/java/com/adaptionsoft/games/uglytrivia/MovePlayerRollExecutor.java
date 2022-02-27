@@ -1,6 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
-public record MovePlayerRollProcessor(int roll, Player player) implements RollProcessor {
+public record MovePlayerRollExecutor(int roll, Player player) implements RollExecutor {
 
     @Override
     public void execute() {

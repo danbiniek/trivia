@@ -5,12 +5,12 @@ import java.util.List;
 
 public class GameFixed implements IGame {
 
-    private final RollProcessorFactory rollProcessor;
+    private final RollExecutorFactory rollProcessor;
     private final List<Player> players = new ArrayList();
     private int currentPlayer = 0;
 
     public GameFixed() {
-        rollProcessor = new RollProcessorFactory(new QuestionCategories());
+        rollProcessor = new RollExecutorFactory(new QuestionCategories());
     }
 
     public void add(String playerName) {
@@ -22,8 +22,7 @@ public class GameFixed implements IGame {
     public void roll(int roll) {
         System.out.println(getPlayerName() + " is the current player");
         System.out.println("They have rolled a " + roll);
-        var processor = rollProcessor.getProcessor(roll, getCurrentPlayer());
-        processor.execute();
+        rollProcessor.getRollExecutor(roll, getCurrentPlayer()).execute();
     }
 
     public boolean wasCorrectlyAnswered() {
