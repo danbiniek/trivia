@@ -5,12 +5,12 @@ import java.util.List;
 
 public class GameFixed implements IGame {
 
-    private final QuestionCategories questionCategories;
+    private final RollProcessorFactory rollProcessor;
     private final List<Player> players = new ArrayList();
     private int currentPlayer = 0;
 
     public GameFixed() {
-        questionCategories = new QuestionCategories();
+        rollProcessor = new RollProcessorFactory(new QuestionCategories());
     }
 
     public void add(String playerName) {
@@ -22,19 +22,8 @@ public class GameFixed implements IGame {
     public void roll(int roll) {
         System.out.println(getPlayerName() + " is the current player");
         System.out.println("They have rolled a " + roll);
-
-        if (getCurrentPlayer().isInPenaltyBox()) {
-            if (roll % 2 != 0) {
-                getCurrentPlayer().gettingOutOfPenaltyBox();
-                System.out.println(getPlayerName() + " is getting out of the penalty box");
-                movePlayerToNewPlaceAndAskQuestion(roll);
-            } else {
-                System.out.println(getPlayerName() + " is not getting out of the penalty box");
-                getCurrentPlayer().gettingOutOfPenaltyBox();
-            }
-        } else {
-            movePlayerToNewPlaceAndAskQuestion(roll);
-        }
+        var processor = rollProcessor.getProcessor(roll, getCurrentPlayer());
+        processor.execute();
     }
 
     public boolean wasCorrectlyAnswered() {
@@ -72,27 +61,12 @@ public class GameFixed implements IGame {
         return true;
     }
 
-    private void movePlayerToNewPlaceAndAskQuestion(int roll) {
-        getCurrentPlayer().move(roll);
-        System.out.println(getPlayerName() + "'s new location is " + getCurrentPlayer().getPlace());
-        System.out.println("The category is " + currentCategory().getName());
-        askQuestion();
-    }
-
     private String getPlayerName() {
         return getCurrentPlayer().getPlayerName();
     }
 
     private Player getCurrentPlayer() {
         return players.get(currentPlayer);
-    }
-
-    private void askQuestion() {
-        questionCategories.ask(currentCategory());
-    }
-
-    private Category currentCategory() {
-        return Category.getCategoryForPlayer(getCurrentPlayer());
     }
 
     private void moveToNextPlayer() {
