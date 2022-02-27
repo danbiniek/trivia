@@ -1,6 +1,10 @@
-package com.adaptionsoft.games.uglytrivia;
+package com.adaptionsoft.games.uglytrivia.roll;
 
-public record AskQuestionRollExecutor(Player player, QuestionCategories questionCategories) implements RollExecutor {
+import com.adaptionsoft.games.uglytrivia.question.Category;
+import com.adaptionsoft.games.uglytrivia.Player;
+import com.adaptionsoft.games.uglytrivia.question.QuestionCategories;
+
+record AskQuestionRollExecutor(Player player, QuestionCategories questionCategories) implements RollExecutor {
 
     @Override
     public void execute() {

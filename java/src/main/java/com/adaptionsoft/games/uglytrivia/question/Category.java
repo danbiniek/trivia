@@ -1,8 +1,10 @@
-package com.adaptionsoft.games.uglytrivia;
+package com.adaptionsoft.games.uglytrivia.question;
+
+import com.adaptionsoft.games.uglytrivia.Player;
 
 import java.util.stream.Stream;
 
-enum Category {
+public enum Category {
     POP("Pop", 0),
     SCIENCE("Science", 1),
     SPORTS("Sports", 2),

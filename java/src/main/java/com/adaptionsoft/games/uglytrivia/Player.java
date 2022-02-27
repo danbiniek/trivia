@@ -1,6 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
-class Player {
+public class Player {
 
     private final String playerName;
     private int place;

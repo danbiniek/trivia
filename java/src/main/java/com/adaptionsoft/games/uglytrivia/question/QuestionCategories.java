@@ -1,4 +1,4 @@
-package com.adaptionsoft.games.uglytrivia;
+package com.adaptionsoft.games.uglytrivia.question;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.stream.Stream;
 
-class QuestionCategories {
+public class QuestionCategories {
 
     private Map<Category, List<String>> questions = new EnumMap<>(Category.class);
 

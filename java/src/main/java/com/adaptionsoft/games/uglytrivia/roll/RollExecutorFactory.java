@@ -1,4 +1,7 @@
-package com.adaptionsoft.games.uglytrivia;
+package com.adaptionsoft.games.uglytrivia.roll;
+
+import com.adaptionsoft.games.uglytrivia.Player;
+import com.adaptionsoft.games.uglytrivia.question.QuestionCategories;
 
 public record RollExecutorFactory(QuestionCategories questionCategories) {
 

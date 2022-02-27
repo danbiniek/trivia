@@ -1,6 +1,8 @@
-package com.adaptionsoft.games.uglytrivia;
+package com.adaptionsoft.games.uglytrivia.roll;
 
-public record IsGettingFromPenaltyRollExecutor(Player player) implements RollExecutor {
+import com.adaptionsoft.games.uglytrivia.Player;
+
+record IsGettingFromPenaltyRollExecutor(Player player) implements RollExecutor {
 
     @Override
     public void execute() {

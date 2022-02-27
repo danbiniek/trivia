@@ -1,5 +1,8 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import com.adaptionsoft.games.uglytrivia.question.QuestionCategories;
+import com.adaptionsoft.games.uglytrivia.roll.RollExecutorFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 

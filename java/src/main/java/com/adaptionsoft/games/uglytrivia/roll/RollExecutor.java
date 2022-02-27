@@ -1,4 +1,4 @@
-package com.adaptionsoft.games.uglytrivia;
+package com.adaptionsoft.games.uglytrivia.roll;
 
 import java.util.Objects;
 
