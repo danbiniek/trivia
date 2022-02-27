@@ -6,6 +6,7 @@ class Player {
     private int place;
     private int purse;
     private boolean inPenaltyBox;
+    private boolean isGettingOutOfPenaltyBox;
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -42,6 +43,13 @@ class Player {
         inPenaltyBox = true;
     }
 
+    public boolean isGettingOutOfPenaltyBox() {
+        return isGettingOutOfPenaltyBox;
+    }
+
+    public void gettingOutOfPenaltyBox() {
+        isGettingOutOfPenaltyBox = true;
+    }
 
     public boolean didWin() {
         return purse == 6;

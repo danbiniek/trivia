@@ -6,10 +6,8 @@ import java.util.List;
 public class GameFixed implements IGame {
 
     private final QuestionCategories questionCategories;
-
-    private boolean isGettingOutOfPenaltyBox;
+    private final List<Player> players = new ArrayList();
     private int currentPlayer = 0;
-    private List<Player> players = new ArrayList();
 
     public GameFixed() {
         questionCategories = new QuestionCategories();
@@ -27,7 +25,7 @@ public class GameFixed implements IGame {
 
         if (getCurrentPlayer().isInPenaltyBox()) {
             if (roll % 2 != 0) {
-                isGettingOutOfPenaltyBox = true;
+                getCurrentPlayer().gettingOutOfPenaltyBox();
 
                 System.out.println(getCurrentPlayer().getPlayerName() + " is getting out of the penalty box");
                 getCurrentPlayer().move(roll);
@@ -38,7 +36,7 @@ public class GameFixed implements IGame {
                 askQuestion();
             } else {
                 System.out.println(getCurrentPlayer().getPlayerName() + " is not getting out of the penalty box");
-                isGettingOutOfPenaltyBox = false;
+                getCurrentPlayer().gettingOutOfPenaltyBox();
             }
         } else {
             getCurrentPlayer().move(roll);
@@ -48,7 +46,47 @@ public class GameFixed implements IGame {
             System.out.println("The category is " + currentCategory().getName());
             askQuestion();
         }
+    }
 
+    public boolean wasCorrectlyAnswered() {
+        if (getCurrentPlayer().isInPenaltyBox()) {
+            if (getCurrentPlayer().isGettingOutOfPenaltyBox()) {
+                System.out.println("Answer was correct!!!!");
+                getCurrentPlayer().addCoin();
+                System.out.println(getCurrentPlayer().getPlayerName()
+                        + " now has "
+                        + getCurrentPlayer().getPurse()
+                        + " Gold Coins.");
+
+                boolean winner = getCurrentPlayer().didWin();
+                moveToNextPlayer();
+                return winner;
+            } else {
+                moveToNextPlayer();
+                return true;
+            }
+        } else {
+            System.out.println("Answer was correct!!!!");
+            getCurrentPlayer().addCoin();
+            System.out.println(getCurrentPlayer().getPlayerName()
+                    + " now has "
+                    + getCurrentPlayer().getPurse()
+                    + " Gold Coins.");
+
+            boolean winner = getCurrentPlayer().didWin();
+            moveToNextPlayer();
+
+            return winner;
+        }
+    }
+
+    public boolean wrongAnswer() {
+        System.out.println("Question was incorrectly answered");
+        System.out.println(getCurrentPlayer().getPlayerName() + " was sent to the penalty box");
+        getCurrentPlayer().moveToPenaltyBox();
+
+        moveToNextPlayer();
+        return true;
     }
 
     private Player getCurrentPlayer() {
@@ -63,39 +101,7 @@ public class GameFixed implements IGame {
         return Category.getCategoryForPlayer(getCurrentPlayer());
     }
 
-    public boolean wasCorrectlyAnswered() {
-        if (getCurrentPlayer().isInPenaltyBox()) {
-            if (isGettingOutOfPenaltyBox) {
-                System.out.println("Answer was correct!!!!");
-                getCurrentPlayer().addCoin();
-                System.out.println(getCurrentPlayer().getPlayerName()
-                        + " now has "
-                        + getCurrentPlayer().getPurse()
-                        + " Gold Coins.");
-
-                boolean winner = getCurrentPlayer().didWin();
-                changeToNextPlayer();
-                return winner;
-            } else {
-                changeToNextPlayer();
-                return true;
-            }
-        } else {
-            System.out.println("Answer was corrent!!!!");
-            getCurrentPlayer().addCoin();
-            System.out.println(getCurrentPlayer().getPlayerName()
-                    + " now has "
-                    + getCurrentPlayer().getPurse()
-                    + " Gold Coins.");
-
-            boolean winner = getCurrentPlayer().didWin();
-            changeToNextPlayer();
-
-            return winner;
-        }
-    }
-
-    private void changeToNextPlayer() {
+    private void moveToNextPlayer() {
         currentPlayer++;
         if (currentPlayer == getNumberOfPlayers()) {
             currentPlayer = 0;
@@ -104,14 +110,5 @@ public class GameFixed implements IGame {
 
     private int getNumberOfPlayers() {
         return players.size();
-    }
-
-    public boolean wrongAnswer() {
-        System.out.println("Question was incorrectly answered");
-        System.out.println(getCurrentPlayer().getPlayerName() + " was sent to the penalty box");
-        getCurrentPlayer().moveToPenaltyBox();
-
-        changeToNextPlayer();
-        return true;
     }
 }
