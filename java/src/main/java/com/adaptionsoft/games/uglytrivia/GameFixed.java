@@ -1,21 +1,23 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import com.adaptionsoft.games.uglytrivia.answer.CorrectAnswerProcessorFactory;
 import com.adaptionsoft.games.uglytrivia.question.QuestionCategories;
 import com.adaptionsoft.games.uglytrivia.roll.RollExecutorFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.adaptionsoft.games.uglytrivia.answer.CorrectAnswerProcessorFactory.getProcessor;
-
 public class GameFixed implements IGame {
 
     private final RollExecutorFactory rollProcessor;
+    private final CorrectAnswerProcessorFactory answerProcessorFactory;
     private final List<Player> players = new ArrayList();
     private int currentPlayer = 0;
 
+
     public GameFixed() {
         rollProcessor = new RollExecutorFactory(new QuestionCategories());
+        answerProcessorFactory = new CorrectAnswerProcessorFactory();
     }
 
     @Override
@@ -34,7 +36,7 @@ public class GameFixed implements IGame {
 
     @Override
     public boolean wasCorrectlyAnswered() {
-        var winner = getProcessor(getCurrentPlayer()).process();
+        var winner = answerProcessorFactory.getProcessor(getCurrentPlayer()).process();
         moveToNextPlayer();
         return winner;
     }
