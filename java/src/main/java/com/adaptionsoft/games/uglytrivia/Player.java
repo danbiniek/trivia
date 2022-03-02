@@ -29,6 +29,7 @@ public class Player {
         if (place >= 12) {
             place -= 12;
         }
+        System.out.println(this.getPlayerName() + "'s new location is " + this.getPlace());
     }
 
     public int getPurse() {
