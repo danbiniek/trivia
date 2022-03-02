@@ -37,6 +37,7 @@ public class Player {
 
     public void addCoin() {
         purse++;
+        System.out.println(this.getPlayerName() + " now has " + this.getPurse() + " Gold Coins.");
     }
 
     public boolean isInPenaltyBox() {
