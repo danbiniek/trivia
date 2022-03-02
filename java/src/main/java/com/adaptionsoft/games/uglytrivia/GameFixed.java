@@ -6,6 +6,8 @@ import com.adaptionsoft.games.uglytrivia.roll.RollExecutorFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.adaptionsoft.games.uglytrivia.answer.CorrectAnswerProcessorFactory.getProcessor;
+
 public class GameFixed implements IGame {
 
     private final RollExecutorFactory rollProcessor;
@@ -18,7 +20,7 @@ public class GameFixed implements IGame {
 
     @Override
     public void add(String playerName) {
-        players.add(new Player(playerName));
+        players.add(Player.ofName(playerName));
         System.out.println(playerName + " was added");
         System.out.println("They are player number " + players.size());
     }
@@ -32,29 +34,9 @@ public class GameFixed implements IGame {
 
     @Override
     public boolean wasCorrectlyAnswered() {
-        if (getCurrentPlayer().isInPenaltyBox()) {
-            if (getCurrentPlayer().isGettingOutOfPenaltyBox()) {
-                System.out.println("Answer was correct!!!!");
-                getCurrentPlayer().addCoin();
-                System.out.println(getPlayerName() + " now has " + getCurrentPlayer().getPurse() + " Gold Coins.");
-
-                boolean winner = getCurrentPlayer().didWin();
-                moveToNextPlayer();
-                return winner;
-            } else {
-                moveToNextPlayer();
-                return true;
-            }
-        } else {
-            System.out.println("Answer was correct!!!!");
-            getCurrentPlayer().addCoin();
-            System.out.println(getPlayerName() + " now has " + getCurrentPlayer().getPurse() + " Gold Coins.");
-
-            boolean winner = getCurrentPlayer().didWin();
-            moveToNextPlayer();
-
-            return winner;
-        }
+        var winner = getProcessor(getCurrentPlayer()).process();
+        moveToNextPlayer();
+        return winner;
     }
 
     @Override
@@ -62,7 +44,6 @@ public class GameFixed implements IGame {
         System.out.println("Question was incorrectly answered");
         System.out.println(getPlayerName() + " was sent to the penalty box");
         getCurrentPlayer().moveToPenaltyBox();
-
         moveToNextPlayer();
         return true;
     }

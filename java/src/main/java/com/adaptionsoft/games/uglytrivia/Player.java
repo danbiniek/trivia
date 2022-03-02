@@ -8,8 +8,12 @@ public class Player {
     private boolean inPenaltyBox;
     private boolean isGettingOutOfPenaltyBox;
 
-    public Player(String playerName) {
+    private Player(String playerName) {
         this.playerName = playerName;
+    }
+
+    public static Player ofName(String name) {
+        return new Player(name);
     }
 
     public String getPlayerName() {
