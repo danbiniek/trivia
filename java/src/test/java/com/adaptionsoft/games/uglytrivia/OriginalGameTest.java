@@ -12,20 +12,20 @@ import java.util.function.Supplier;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class GameTest {
+class OriginalGameTest {
 
     private static boolean didPlayerWin;
 
     @Test
     void aFixedGame_haveToLogTheSameOutputAsOriginalGame() {
         for (int seed = 0; seed < 24; seed++) {
-            String expected = redirectOutput(Game::new, seed);
+            String expected = redirectOutput(OriginalGame::new, seed);
             String actual = redirectOutput(GameFixed::new, seed);
             assertEquals(expected, actual, "Change detected for seed: " + seed);
         }
     }
 
-    private String redirectOutput(Supplier<IGame> gameSupplier, int seed) {
+    private String redirectOutput(Supplier<Game> gameSupplier, int seed) {
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         System.setOut(new PrintStream(buffer));
 
@@ -38,7 +38,7 @@ class GameTest {
         return content;
     }
 
-    private void runGame(Supplier<IGame> gameSupplier, int seed) {
+    private void runGame(Supplier<Game> gameSupplier, int seed) {
         var game = gameSupplier.get();
         game.add("Chet");
         game.add("Pat");

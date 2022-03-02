@@ -7,7 +7,7 @@ import com.adaptionsoft.games.uglytrivia.roll.RollExecutorFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameFixed implements IGame {
+public class GameFixed implements Game {
 
     private final RollExecutorFactory rollProcessor;
     private final CorrectAnswerProcessorFactory answerProcessorFactory;
