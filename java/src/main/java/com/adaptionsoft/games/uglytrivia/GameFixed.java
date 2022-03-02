@@ -16,18 +16,21 @@ public class GameFixed implements IGame {
         rollProcessor = new RollExecutorFactory(new QuestionCategories());
     }
 
+    @Override
     public void add(String playerName) {
         players.add(new Player(playerName));
         System.out.println(playerName + " was added");
         System.out.println("They are player number " + players.size());
     }
 
+    @Override
     public void roll(int roll) {
         System.out.println(getPlayerName() + " is the current player");
         System.out.println("They have rolled a " + roll);
         rollProcessor.getRollExecutor(roll, getCurrentPlayer()).execute();
     }
 
+    @Override
     public boolean wasCorrectlyAnswered() {
         if (getCurrentPlayer().isInPenaltyBox()) {
             if (getCurrentPlayer().isGettingOutOfPenaltyBox()) {
@@ -54,6 +57,7 @@ public class GameFixed implements IGame {
         }
     }
 
+    @Override
     public boolean wrongAnswer() {
         System.out.println("Question was incorrectly answered");
         System.out.println(getPlayerName() + " was sent to the penalty box");
