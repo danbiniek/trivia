@@ -18,6 +18,6 @@ record AskQuestionRollExecutor(Player player, QuestionCategories questionCategor
     }
 
     private void askQuestion() {
-        questionCategories.ask(currentCategory());
+        System.out.println(questionCategories.getQuestion(currentCategory()));
     }
 }

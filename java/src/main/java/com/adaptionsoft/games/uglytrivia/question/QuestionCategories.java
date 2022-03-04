@@ -35,7 +35,7 @@ public class QuestionCategories {
         return currentQuestions;
     }
 
-    public void ask(Category category) {
-        System.out.println(questions.get(category).remove(0));
+    public String getQuestion(Category category) {
+        return questions.get(category).remove(0);
     }
 }
