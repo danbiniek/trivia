@@ -1,5 +1,7 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import java.util.Objects;
+
 public class Player {
 
     private final String playerName;
@@ -13,6 +15,10 @@ public class Player {
     }
 
     public static Player ofName(String name) {
+        Objects.requireNonNull(name);
+        if (name.isBlank()) {
+            throw new IllegalArgumentException();
+        }
         return new Player(name);
     }
 
